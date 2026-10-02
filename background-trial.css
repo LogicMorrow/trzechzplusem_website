@@ -1,0 +1,80 @@
+/* Optional background experiment. Remove this stylesheet link to revert completely.
+   Decorative only: no layout changes, scripts, external assets or pointer handling. */
+.hero,
+.portfolio,
+.services,
+.team-section,
+.contact-section {
+  position: relative;
+  isolation: isolate;
+}
+
+:is(.hero, .portfolio, .services, .team-section, .contact-section)::before,
+:is(.hero, .portfolio, .services, .team-section, .contact-section)::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Sparse vertical guides and a few orange marks, like markings outside a frame. */
+:is(.hero, .portfolio, .services, .team-section, .contact-section)::before {
+  inset: 0;
+  background-image: url("assets/images/ui/background-guides.svg");
+  background-position: center top;
+  background-size: 1200px 780px;
+  opacity: .44;
+}
+
+/* An oversized, incomplete frame remains at the edge of each composition. */
+:is(.hero, .portfolio, .services, .team-section, .contact-section)::after {
+  top: 11%;
+  right: 2%;
+  width: min(34%, 450px);
+  height: 68%;
+  max-height: 600px;
+  border: 1px solid rgb(174 181 189 / 12%);
+  border-left: 0;
+  border-radius: 0 36px 0 0;
+  transform: translate(-8px, 10px);
+}
+
+.hero::after {
+  top: 5%;
+  right: 0;
+  width: 45%;
+  height: 79%;
+  border-color: rgb(255 122 0 / 17%);
+}
+.services::before { background-position: center -280px; }
+.team-section::after { right: auto; left: 3%; border-right: 0; border-left: 1px solid rgb(174 181 189 / 12%); border-radius: 36px 0 0 0; }
+.contact-section::before { background-position: center bottom; opacity: .65; }
+.contact-section::after { border-color: rgb(255 122 0 / 17%); width: 29%; }
+
+/* A short opening movement settles into a static background, with no ongoing
+   distraction or continuously running animation on a long page. */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .hero::before { animation: background-guides-arrive 4.5s ease-out both; }
+  .hero::after { animation: background-frame-arrive 4.5s ease-out both; }
+}
+@keyframes background-guides-arrive {
+  from { opacity: .12; }
+  to { opacity: .44; }
+}
+@keyframes background-frame-arrive {
+  from { opacity: .2; transform: translate(-24px, 24px); }
+  to { opacity: 1; transform: translate(-8px, 10px); }
+}
+
+@media (max-width: 767px) {
+  :is(.hero, .portfolio, .services, .team-section, .contact-section)::before {
+    background-size: 680px 680px;
+    opacity: .24;
+  }
+  :is(.hero, .portfolio, .services, .team-section, .contact-section)::after { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.hero, .portfolio, .services, .team-section, .contact-section)::before,
+  :is(.hero, .portfolio, .services, .team-section, .contact-section)::after { animation: none; }
+}

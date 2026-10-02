@@ -1,0 +1,73 @@
+# Public repository allowlist: everything is private unless explicitly allowed.
+# Keep this file tracked so the rules apply to every clone.
+*
+!/.gitignore
+
+# Current website entry points and runtime files.
+# Add new public pages/scripts here deliberately; do not allow all root files.
+!/index.html
+!/polityka-prywatnosci.html
+!/polityka-cookies.html
+!/informacje-prawne.html
+!/styles.css
+!/background-trial.css
+!/motion-trial.css
+!/script.js
+!/motion-trial.js
+
+# Optional runtime CSS/JS directories (not internal scripts elsewhere).
+!/css/
+!/css/**/
+!/css/**/*.css
+!/js/
+!/js/**/
+!/js/**/*.js
+
+# Public, browser-ready assets only. Documents and production sources stay local.
+!/assets/
+!/assets/**/
+!/assets/**/*.svg
+!/assets/**/*.png
+!/assets/**/*.jpg
+!/assets/**/*.jpeg
+!/assets/**/*.webp
+!/assets/**/*.avif
+!/assets/**/*.gif
+!/assets/**/*.ico
+!/assets/**/*.mp4
+!/assets/**/*.webm
+!/assets/**/*.mp3
+!/assets/**/*.ogg
+!/assets/**/*.wav
+!/assets/**/*.vtt
+!/assets/**/*.woff
+!/assets/**/*.woff2
+!/assets/**/*.ttf
+!/assets/**/*.otf
+
+# Never admit private/internal folders even if nested inside allowed asset paths.
+**/private/
+**/internal/
+**/raw/
+**/references/
+**/docs/
+**/skills/
+**/tmp/
+**/temp/
+**/node_modules/
+**/.*
+!/.gitignore
+
+# Internal instructions, operating-system metadata and backups.
+**/AGENTS.md
+**/SKILL.md
+**/README.md
+**/Thumbs.db
+**/Desktop.ini
+**/*.bak
+**/*.tmp
+**/*~
+
+# Gitignore is not access control: forced adds bypass it, and tracked files/history
+# are unaffected. Review staged changes before publishing. Never put secrets in
+# allowed HTML, CSS, JavaScript, SVG or other public assets.

@@ -1,0 +1,66 @@
+/* Optional layer. Base content remains readable without this file or JavaScript. */
+.motion-control {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 14px;
+  min-height: 44px;
+  font: inherit;
+  font-size: .75rem;
+  cursor: pointer;
+}
+.motion-control:hover { color: var(--light); border-color: var(--muted); }
+.motion-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--orange);
+  opacity: .65;
+  transform: scaleX(var(--reading-progress, 0));
+  transform-origin: left;
+  pointer-events: none;
+  z-index: 20;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .motion-running .motion-enter {
+    opacity: .78;
+    transform: translateY(12px);
+    transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+  }
+  .motion-running .motion-enter.is-visible,
+  .motion-running .motion-enter:focus-within { opacity: 1; transform: none; }
+  .motion-running .hero::before { animation: quiet-guides 16s ease-in-out infinite alternate; }
+  .motion-running .hero::after {
+    animation: none;
+    transform: translate(-8px, calc(10px + var(--hero-drift, 0px)));
+  }
+  .motion-running .hero .status-dot { animation: quiet-accent 5s ease-in-out infinite alternate; }
+  .motion-running .hero .frame-art { animation: quiet-frame 12s ease-in-out infinite alternate; }
+  .motion-running .button span,
+  .motion-running .text-link span { transition: transform .25s ease; }
+  @media (hover: hover) and (pointer: fine) {
+    .motion-running .button:hover span,
+    .motion-running .text-link:hover span { transform: translate(2px, -2px); }
+  }
+  @media (max-width: 767px) {
+    .motion-running .motion-enter { transform: translateY(6px); transition-duration: .55s; }
+    .motion-running .motion-enter.is-visible,
+    .motion-running .motion-enter:focus-within { transform: none; }
+    .motion-running .hero::before,
+    .motion-running .hero .frame-art { animation: none; }
+  }
+}
+@keyframes quiet-guides { from { opacity: .28; } to { opacity: .55; } }
+@keyframes quiet-accent { from { opacity: .55; } to { opacity: 1; } }
+@keyframes quiet-frame { from { transform: translateY(0); } to { transform: translateY(-5px); } }
+
+/* Stop also the earlier background trial, including when the tab is hidden. */
+.motion-stopped .hero::before,
+.motion-stopped .hero::after { animation: none; }
+.motion-stopped .motion-progress { display: none; }
+.motion-stopped .motion-enter { opacity: 1; transform: none; transition: none; }
+html.motion-stopped { scroll-behavior: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .motion-progress { display: none; }
+  .motion-enter { opacity: 1; transform: none; transition: none; }
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="190" height="48" viewBox="0 0 190 48" fill="none" role="img" aria-labelledby="logo-title logo-description">
+  <title id="logo-title">Trzech z Plusem</title>
+  <desc id="logo-description">Roboczy znak: trzy jasne poziome elementy i pomarańczowy plus obok nazwy agencji.</desc>
+  <g fill="#F0F2F4">
+    <path d="M2 6h30v7H2zM2 21h23v7H2zM2 36h30v7H2z"/>
+  </g>
+  <path d="M39 15h7v9h9v7h-9v9h-7v-9h-9v-7h9z" fill="#FF7A00"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700" letter-spacing="-.7">
+    <text x="69" y="20" font-size="19" fill="#F0F2F4">Trzech z</text>
+    <text x="68" y="44" font-size="27" fill="#FF7A00">Plusem</text>
+  </g>
+</svg>
