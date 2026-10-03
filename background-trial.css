@@ -2,6 +2,8 @@
    Decorative only: no layout changes, scripts, external assets or pointer handling. */
 .hero,
 .portfolio,
+.process-section,
+.faq-section,
 .services,
 .team-section,
 .contact-section {
@@ -9,8 +11,8 @@
   isolation: isolate;
 }
 
-:is(.hero, .portfolio, .services, .team-section, .contact-section)::before,
-:is(.hero, .portfolio, .services, .team-section, .contact-section)::after {
+:is(.hero, .portfolio, .process-section, .services, .team-section, .faq-section, .contact-section)::before,
+:is(.hero, .portfolio, .process-section, .services, .team-section, .faq-section, .contact-section)::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -18,7 +20,7 @@
 }
 
 /* Sparse vertical guides and a few orange marks, like markings outside a frame. */
-:is(.hero, .portfolio, .services, .team-section, .contact-section)::before {
+:is(.hero, .portfolio, .process-section, .services, .team-section, .faq-section, .contact-section)::before {
   inset: 0;
   background-image: url("assets/images/ui/background-guides.svg");
   background-position: center top;
@@ -27,7 +29,7 @@
 }
 
 /* An oversized, incomplete frame remains at the edge of each composition. */
-:is(.hero, .portfolio, .services, .team-section, .contact-section)::after {
+:is(.hero, .portfolio, .process-section, .services, .team-section, .faq-section, .contact-section)::after {
   top: 11%;
   right: 2%;
   width: min(34%, 450px);
@@ -67,14 +69,14 @@
 }
 
 @media (max-width: 767px) {
-  :is(.hero, .portfolio, .services, .team-section, .contact-section)::before {
+  :is(.hero, .portfolio, .process-section, .services, .team-section, .faq-section, .contact-section)::before {
     background-size: 680px 680px;
     opacity: .24;
   }
-  :is(.hero, .portfolio, .services, .team-section, .contact-section)::after { display: none; }
+  :is(.hero, .portfolio, .process-section, .services, .team-section, .faq-section, .contact-section)::after { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.hero, .portfolio, .services, .team-section, .contact-section)::before,
-  :is(.hero, .portfolio, .services, .team-section, .contact-section)::after { animation: none; }
+  :is(.hero, .portfolio, .process-section, .services, .team-section, .faq-section, .contact-section)::before,
+  :is(.hero, .portfolio, .process-section, .services, .team-section, .faq-section, .contact-section)::after { animation: none; }
 }

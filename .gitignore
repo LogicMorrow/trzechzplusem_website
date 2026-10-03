@@ -59,6 +59,13 @@
 !/.gitignore
 
 # Internal instructions, operating-system metadata and backups.
+# Original media remain local; only optimized website copies are published.
+/assets/images/team/*.jpg
+/assets/images/team/*.jpeg
+/assets/images/team/*.JPEG
+/assets/images/team/marcin-pudlo-alternative-*.webp
+/assets/video/detailing/
+/assets/images/portfolio/Zdjęcia_z_planu/
 **/AGENTS.md
 **/SKILL.md
 **/README.md

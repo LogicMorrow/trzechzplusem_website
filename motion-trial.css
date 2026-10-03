@@ -10,6 +10,16 @@
   cursor: pointer;
 }
 .motion-control:hover { color: var(--light); border-color: var(--muted); }
+.site-header, .site-footer { position: relative; isolation: isolate; }
+.scroll-route { position: absolute; z-index: -1; overflow: hidden; pointer-events: none; }
+.scroll-route path { fill: none; vector-effect: non-scaling-stroke; }
+.scroll-route-rail { stroke: var(--muted); stroke-opacity: .23; stroke-width: 1; }
+.scroll-route-marker { stroke: var(--orange); stroke-opacity: .8; stroke-width: 3; stroke-linecap: round; }
+.process-section .process-backdrop { z-index: -2; }
+@media (max-width: 767px) {
+  .scroll-route-rail { stroke-opacity: .18; }
+  .scroll-route-marker { stroke-opacity: .65; }
+}
 .motion-progress {
   position: fixed;
   inset: 0 0 auto;
@@ -36,6 +46,9 @@
   }
   .motion-running .hero .status-dot { animation: quiet-accent 5s ease-in-out infinite alternate; }
   .motion-running .hero .frame-art { animation: quiet-frame 12s ease-in-out infinite alternate; }
+  .motion-running .frame-decoration::before { animation: frame-lines-drift 18s ease-in-out infinite alternate; }
+  .motion-running .frame-guide { animation: frame-outline-drift 14s ease-in-out infinite alternate; }
+  .motion-running .frame-marker { animation: frame-marker-drift 11s ease-in-out infinite alternate; }
   .motion-running .button span,
   .motion-running .text-link span { transition: transform .25s ease; }
   @media (hover: hover) and (pointer: fine) {
@@ -53,6 +66,9 @@
 @keyframes quiet-guides { from { opacity: .28; } to { opacity: .55; } }
 @keyframes quiet-accent { from { opacity: .55; } to { opacity: 1; } }
 @keyframes quiet-frame { from { transform: translateY(0); } to { transform: translateY(-5px); } }
+@keyframes frame-lines-drift { from { transform: translateY(-10px); opacity: .45; } to { transform: translateY(10px); opacity: .85; } }
+@keyframes frame-outline-drift { from { transform: translate(0, 0); } to { transform: translate(-5px, 8px); } }
+@keyframes frame-marker-drift { from { transform: translateY(0); opacity: .4; } to { transform: translateY(14px); opacity: .75; } }
 
 /* Stop also the earlier background trial, including when the tab is hidden. */
 .motion-stopped .hero::before,
